@@ -1,0 +1,56 @@
+name: Quest proposal
+description: Propose a new quest for an existing course.
+title: "[Quest] "
+labels: ["quest-proposal", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for wanting to teach. Read [Writing a quest](../blob/main/docs/authoring/writing-a-quest.md) first, then sketch it here. We'll agree on the concept and placement before you write code.
+  - type: dropdown
+    id: course
+    attributes:
+      label: Course
+      options: [Learn DynamoDB, Learn S3, Learn CDK]
+    validations: { required: true }
+  - type: input
+    id: position
+    attributes:
+      label: Where it goes
+      description: Part, and the quest it follows.
+      placeholder: "Johto, after quest-13 (Transactions)"
+    validations: { required: true }
+  - type: textarea
+    id: concept
+    attributes:
+      label: Concept
+      description: One sentence. What can the learner do afterwards that they couldn't before?
+    validations: { required: true }
+  - type: textarea
+    id: problem
+    attributes:
+      label: The Pokédex problem, and what goes wrong without it
+      description: The situation, and the failure the learner will watch or trigger.
+    validations: { required: true }
+  - type: textarea
+    id: practice
+    attributes:
+      label: Practice
+      description: What the starter gets wrong, what success looks like, and the real AWS error for the common mistake.
+  - type: textarea
+    id: check
+    attributes:
+      label: Check question
+      description: Prompt, four options, and why the right one is right. (We'll move the answer server-side.)
+  - type: textarea
+    id: sources
+    attributes:
+      label: AWS documentation
+      description: Links you're basing this on.
+    validations: { required: true }
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to write this quest myself
