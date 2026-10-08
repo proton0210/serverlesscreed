@@ -32,10 +32,13 @@ Names follow the AWS Trademark Guidelines ("[our brand] for [AWS mark]", no AWS 
 
 ## Setup (production)
 
-1. Deploy the table and policy: `infra/certificates-table.yaml` (command in the file header).
-2. Give the app AWS access to the table: attach the output policy to the app's role, or create an IAM user with
-   that policy and set `CERT_AWS_ACCESS_KEY_ID` / `CERT_AWS_SECRET_ACCESS_KEY` (hosts such as Vercel reserve `AWS_*`).
-3. Set environment variables:
+1. Deploy the table, policy and Amplify compute role: `infra/certificates-table.yaml` (command in the file header).
+2. Give the app AWS access to the table. On Amplify Hosting, set the stack's `AmplifyComputeRoleArn` output as the
+   app's **compute role** (App settings → IAM roles); no keys are needed. Elsewhere, attach the output policy to the
+   app's role, or create an IAM user with that policy and set `CERT_AWS_ACCESS_KEY_ID` / `CERT_AWS_SECRET_ACCESS_KEY`
+   (hosts such as Vercel reserve `AWS_*`).
+3. Set environment variables. On Amplify, `amplify.yml` copies every `CERT_*` and `NEXT_PUBLIC_*` variable into
+   `.env.production` during the build, because the Next.js server only sees build-time variables that way:
 
 | Variable | Required | Purpose |
 | --- | --- | --- |

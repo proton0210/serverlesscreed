@@ -38,7 +38,8 @@ const WavyText = ({
             exit="hidden"
             variants={combinedVariants}
             transition={{
-              yoyo: Infinity,
+              repeat: Infinity,
+              repeatType: "reverse",
               duration: duration,
               delay: i * delay,
             }}
