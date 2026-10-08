@@ -57,7 +57,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               {badges.map((src) => (
-                // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+                // eslint-disable-next-line jsx-a11y/alt-text
                 <img key={src.slice(-24)} src={src} width={96} height={96} />
               ))}
             </div>

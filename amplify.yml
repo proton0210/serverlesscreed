@@ -1,0 +1,23 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Next.js 16 needs Node 20.9+; build on the same major as CI.
+        - nvm use 22 || nvm install 22
+        - node -v
+        - npm ci --cache .npm --prefer-offline
+    build:
+      commands:
+        # Amplify passes environment variables to the build only. The Next.js server reads
+        # them at runtime from .env.production, so copy the ones the app uses into it.
+        - env | grep -E '^(CERT_|NEXT_PUBLIC_)' >> .env.production || true
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
+      - .npm/**/*

@@ -9,6 +9,16 @@ Parameters:
   TableName:
     Type: String
     Default: ServerlessCreedCertificates
+  CreateAmplifyComputeRole:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "true"
+    Description: >
+      Create an IAM role for Amplify Hosting compute (the Next.js server) with the app policy attached.
+      Set it as the app's compute role in Amplify and no access keys are needed.
+
+Conditions:
+  MakeComputeRole: !Equals [!Ref CreateAmplifyComputeRole, "true"]
 
 Resources:
   CertificatesTable:
@@ -48,8 +58,26 @@ Resources:
               - dynamodb:ConditionCheckItem
             Resource: !GetAtt CertificatesTable.Arn
 
+  AmplifyComputeRole:
+    Type: AWS::IAM::Role
+    Condition: MakeComputeRole
+    Properties:
+      RoleName: !Sub "${TableName}-amplify-compute"
+      Description: Runtime role for the Serverless Creed Next.js server on Amplify Hosting.
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: amplify.amazonaws.com }
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Ref CertificatesAppPolicy
+
 Outputs:
   TableName:
     Value: !Ref CertificatesTable
   PolicyArn:
     Value: !Ref CertificatesAppPolicy
+  AmplifyComputeRoleArn:
+    Condition: MakeComputeRole
+    Value: !GetAtt AmplifyComputeRole.Arn
