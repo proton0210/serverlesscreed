@@ -1,0 +1,33 @@
+name: Course proposal
+description: Ask for, or offer to build, a course on another AWS service.
+title: "[Course] "
+labels: ["course-proposal"]
+body:
+  - type: input
+    id: service
+    attributes:
+      label: AWS service
+      placeholder: AWS Lambda, Amazon SQS, Step Functions…
+    validations: { required: true }
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this one
+      description: Who needs it, and what they get wrong today.
+    validations: { required: true }
+  - type: textarea
+    id: outline
+    attributes:
+      label: Rough outline
+      description: 8–12 concepts, foundations first, ending in a production review.
+  - type: textarea
+    id: simulation
+    attributes:
+      label: How would practice be checked?
+      description: Which API calls or constructs need simulating? (Learner code is parsed, never run.)
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to help build this course
