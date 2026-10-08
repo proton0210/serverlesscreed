@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Serverless Creed course certificates. Single table (see lib/certificates/store.ts) and a
+  least-privilege policy for the web app. Deploy:
+    aws cloudformation deploy --template-file infra/certificates-table.yaml \
+      --stack-name serverlesscreed-certificates --capabilities CAPABILITY_NAMED_IAM --region ap-south-1
+
+Parameters:
+  TableName:
+    Type: String
+    Default: ServerlessCreedCertificates
+
+Resources:
+  CertificatesTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: !Ref TableName
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: PK, AttributeType: S }
+        - { AttributeName: SK, AttributeType: S }
+      KeySchema:
+        - { AttributeName: PK, KeyType: HASH }
+        - { AttributeName: SK, KeyType: RANGE }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      SSESpecification:
+        SSEEnabled: true
+      DeletionProtectionEnabled: true
+      Tags:
+        - { Key: app, Value: serverlesscreed }
+
+  CertificatesAppPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: !Sub "${TableName}-app"
+      Description: Read, issue and delete certificates. Attach to the role or user the web app runs as.
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:DeleteItem
+              - dynamodb:ConditionCheckItem
+            Resource: !GetAtt CertificatesTable.Arn
+
+Outputs:
+  TableName:
+    Value: !Ref CertificatesTable
+  PolicyArn:
+    Value: !Ref CertificatesAppPolicy

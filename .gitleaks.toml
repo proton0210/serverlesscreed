@@ -1,0 +1,13 @@
+title = "Serverless Creed secret scan"
+
+[extend]
+useDefault = true
+
+# Deliberately fake values used to test the learner-code credential scanner.
+[allowlist]
+description = "Known test fixtures"
+regexes = [
+  '''AKIAABCDEFGHIJKLMNOP''',
+  '''AKIAIOSFODNN7EXAMPLE''',
+  '''wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY''',
+]

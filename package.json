@@ -1,0 +1,47 @@
+{
+  "name": "serverlesscreed",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test:dynamodb": "node scripts/check-dynamodb.mjs",
+    "test:dynamodb:sdk": "node scripts/check-dynamodb-sdk.mjs",
+    "test:s3": "node scripts/check-s3.mjs",
+    "test:cdk:unit": "node --no-warnings --experimental-strip-types scripts/check-cdk-unit.mjs",
+    "test:cdk": "node --no-warnings --experimental-strip-types scripts/check-cdk.mjs"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@monaco-editor/react": "^4.7.0",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "acorn": "^8.17.0",
+    "next": "^15.5.18",
+    "react": "^18",
+    "react-confetti": "^6.4.0",
+    "react-dom": "^18",
+    "react-icons": "^5.5.0",
+    "three": "^0.186.1",
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-dynamodb": "3.1132.0",
+    "@aws-sdk/lib-dynamodb": "3.1132.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/three": "^0.186.0",
+    "autoprefixer": "^10",
+    "clsx": "^2.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.5.18",
+    "framer-motion": "^11.2.10",
+    "postcss": "^8.5.19",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "^3.4.3"
+  }
+}

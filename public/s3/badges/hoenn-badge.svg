@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Hoenn badge">
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f6f8"/><stop offset=".45" stop-color="#8b939c"/><stop offset=".55" stop-color="#5b626b"/><stop offset="1" stop-color="#c9ced4"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2bbd84"/><stop offset="1" stop-color="#0f6b49"/>
+    </linearGradient>
+    <linearGradient id="bucket" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9fe3c6"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#9fe3c6"/>
+    </linearGradient>
+    <radialGradient id="shine" cx=".35" cy=".2" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path d="M128 10 L218 44 Q232 50 232 66 L232 132 Q232 196 128 246 Q24 196 24 132 L24 66 Q24 50 38 44 Z" fill="url(#rim)"/>
+  <path d="M128 24 L208 54 Q218 58 218 70 L218 132 Q218 184 128 230 Q38 184 38 132 L38 70 Q38 58 48 54 Z" fill="url(#face)"/>
+  <path d="M128 24 L208 54 Q218 58 218 70 L218 132 Q218 184 128 230 Q38 184 38 132 L38 70 Q38 58 48 54 Z" fill="url(#shine)"/>
+  <g stroke="#ffffff" stroke-opacity=".12" stroke-width="2" fill="none">
+    <path d="M60 80 h136 M52 110 h152 M50 140 h156 M58 170 h140 M78 200 h100"/>
+  </g>
+  <!-- bucket -->
+  <g transform="translate(128 132)">
+    <path d="M-50 -34 L-38 44 Q0 58 38 44 L50 -34 Z" fill="url(#bucket)" stroke="#1b1f24" stroke-opacity=".35" stroke-width="2"/>
+    <ellipse cx="0" cy="-34" rx="50" ry="14" fill="#0f6b49" stroke="#ffffff" stroke-width="4"/>
+    <ellipse cx="0" cy="-34" rx="40" ry="9" fill="#0d0f12" fill-opacity=".35"/>
+    <path d="M-44 6 Q0 20 44 6" fill="none" stroke="#0f6b49" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <path d="M0 -8 C18 -8 24 8 12 22 C4 30 -12 30 -18 20 C-8 22 0 16 0 6 C-6 12 -14 12 -18 6 C-14 -4 -8 -8 0 -8 Z" fill="#1f9d6b" stroke="#0e4f36" stroke-width="2"/>
+  </g>
+  <path d="M128 4 l9 18 l18 9 l-18 9 l-9 18 l-9 -18 l-18 -9 l18 -9 Z" fill="#f4c542" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+</svg>
