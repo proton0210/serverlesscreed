@@ -1,0 +1,33 @@
+name: Lesson or checker problem
+description: Something in a lesson is wrong or unclear, or the checker judged code incorrectly.
+title: "[Content] "
+labels: ["content"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Quest URL
+      placeholder: https://serverlesscreed.com/dynamodb/quest-11
+    validations: { required: true }
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What's wrong
+      options:
+        - Technically incorrect or outdated
+        - Unclear or confusing
+        - Checker rejected correct code
+        - Checker accepted wrong code
+        - Typo or formatting
+    validations: { required: true }
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Quote the sentence, or paste the code you submitted and the message you got.
+    validations: { required: true }
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: For accuracy issues, the AWS documentation that says otherwise.
