@@ -1,0 +1,8 @@
+# Every change is reviewed by the maintainer.
+*                         @proton0210
+
+# Grading, certificates and anything that parses learner code.
+/app/api/                 @proton0210
+/lib/certificates/        @proton0210
+/lib/*/checker.ts         @proton0210
+/lib/cdk/                 @proton0210
