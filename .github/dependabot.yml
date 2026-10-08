@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      # Pinned on purpose: bump together with the curriculum review in lib/dynamodb/curriculum-review.ts.
+      - dependency-name: "@aws-sdk/*"
+    groups:
+      next-react:
+        patterns: ["next", "eslint-config-next", "react", "react-dom", "@types/react*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
