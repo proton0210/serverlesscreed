@@ -197,3 +197,33 @@ html { scroll-padding-top: 96px; }
   .sc-h-sheet-1 { transform: translate3d(12px, 10px, -30px) rotateZ(1.5deg) }
   .sc-h-sheet-2 { transform: translate3d(26px, 22px, -60px) rotateZ(3deg) }
 }
+
+/* ── Open source / proof of work ── */
+.sc-os-grid {
+  background-image:
+    linear-gradient(rgba(22, 20, 15, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 20, 15, .045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 100%);
+}
+.sc-os-glow {
+  --x: 70%;
+  --y: 20%;
+  background: radial-gradient(420px circle at var(--x) var(--y), rgba(19, 165, 142, .14), transparent 70%);
+}
+.sc-os-row { opacity: 0; transform: translateX(-10px); }
+.sc-os-row.is-in { animation: sc-os-in .5s var(--sc-ease) calc(var(--i) * 70ms + 250ms) forwards; }
+@keyframes sc-os-in { to { opacity: 1; transform: none; } }
+.sc-os-caret { animation: sc-os-blink 1.1s steps(1) infinite; }
+@keyframes sc-os-blink { 50% { opacity: 0; } }
+.sc-os-cert::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 35%, rgba(19, 165, 142, .20) 50%, transparent 65%);
+  transition: transform .8s var(--sc-ease);
+}
+.sc-os-cert:hover::after { transform: translateX(120%); }
+@media (prefers-reduced-motion: reduce) {
+  .sc-os-row { opacity: 1; transform: none; }
+  .sc-os-row.is-in, .sc-os-caret { animation: none; }
+  .sc-os-cert::after { transition: none; }
+}

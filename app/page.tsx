@@ -7,6 +7,9 @@ import type { CourseConfig } from "@/lib/learn/types";
 import { TIERS } from "@/lib/certificates/tiers";
 import { CritterIcon, critterName } from "@/components/dynamodb/scene/critter-svg";
 import { LambdaMark, Logo } from "@/components/brand/logo";
+import { REPO_URL } from "@/lib/site";
+import { ContributeSection } from "@/components/home/contribute";
+import { OpenSourceSection } from "@/components/home/open-source";
 import { CourseBars, NavCta, UpNextCard, type HomeCourse } from "@/components/home/home-progress";
 
 export const metadata: Metadata = {
@@ -154,6 +157,8 @@ export default function Home() {
             <a href="#certificates" className="transition hover:text-[var(--sc-ink)]">Certificates</a>
             <a href="#tools" className="transition hover:text-[var(--sc-ink)]">Desktop tools</a>
             <a href="#about" className="transition hover:text-[var(--sc-ink)]">About</a>
+            <a href="#open-source" className="transition hover:text-[var(--sc-ink)]">Open source</a>
+            <a href="#contribute" className="transition hover:text-[var(--sc-ink)]">Contribute</a>
           </div>
           <div className="flex items-center gap-3">
             <a
@@ -648,6 +653,12 @@ export default function Home() {
         </ol>
       </section>
 
+      {/* ── Open source ── */}
+      <OpenSourceSection />
+
+      {/* ── Contribute ── */}
+      <ContributeSection />
+
       {/* ── Footer ── */}
       <footer className="bg-[var(--sc-ink)] text-[#d8d3c7]">
         <div className="mx-auto max-w-[1200px] px-5 pb-10 pt-16 sm:px-8">
@@ -661,7 +672,7 @@ export default function Home() {
             {[
               ["Learn", [["Learn DynamoDB", "/dynamodb"], ["Learn S3", "/s3"], ["Learn CDK", "/cdk"], ["Certificates", "#certificates"]]],
               ["Tools", [["Tables for DynamoDB", "https://tables.serverlesscreed.com/"], ["Buckets for S3", "https://buckets.serverlesscreed.com/"]]],
-              ["Company", [["Contact the founder", `mailto:${FOUNDER_EMAIL}`]]],
+              ["Company", [["Contribute a course", "#contribute"], ["GitHub", REPO_URL], ["Contact the founder", `mailto:${FOUNDER_EMAIL}`]]],
             ].map(([heading, links]) => (
               <nav key={heading as string} aria-label={heading as string} className="flex flex-col gap-3 text-[15px]">
                 <p className="text-xs font-bold uppercase tracking-[.14em] text-[#8a8478]">{heading as string}</p>
