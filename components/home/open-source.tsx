@@ -29,7 +29,17 @@ const PROJECTS: Project[] = [
     ],
   },
   { project: "AI/ML Security Assessment", repo: "aws-samples/sample-aiml-security-assessment", prs: [[65, "Choose which service assessments run"]] },
-  { project: "Serverless Patterns", repo: "aws-samples/serverless-patterns", prs: [[2740, "New pattern: Cognito, AppSync and Bedrock"]] },
+  {
+    project: "Serverless Patterns",
+    repo: "aws-samples/serverless-patterns",
+    prs: [
+      [2704, "New pattern: Cognito, Lambda and DynamoDB"],
+      [2740, "New pattern: Cognito, AppSync and Bedrock"],
+    ],
+  },
+  { project: "Amazon Bedrock RAG", repo: "aws-samples/amazon-bedrock-rag", prs: [[22, "Update the README for SonarLint, now SonarQube"]] },
+  { project: "Syntax UI", repo: "SyntaxUI/syntaxui", prs: [[141, "Fix the id on the spring animated features component"]] },
+  { project: "Next to None (MDX course)", repo: "meech-ward/next-to-none-mdx", prs: [[5, "Fix a video link in the getting-started lesson"]] },
 ];
 
 const CERTS = [
@@ -115,7 +125,7 @@ export function OpenSourceSection() {
           <span className="block text-[var(--sc-accent)]">I build these courses.</span>
         </h2>
         <p className="mt-5 max-w-[660px] text-[17px] leading-relaxed text-[var(--sc-ink-2)]">
-          I’m a developer from Mumbai who learns AWS by building with it. Along the way I’ve been lucky to have {PR_COUNT} fixes accepted by projects I rely on, like the AWS CDK CLI and Powertools for AWS Lambda, and I’m grateful to the maintainers who took the time to review them. I try to bring the same care to every lesson here. If you ever spot a mistake, please tell me and I’ll fix it.
+          I’m a developer from Mumbai who learns AWS by building with it. Along the way I’ve been lucky to have {PR_COUNT} contributions accepted by projects I rely on, like the AWS CDK CLI and Powertools for AWS Lambda, and I’m grateful to the maintainers who took the time to review them. I try to bring the same care to every lesson here. If you ever spot a mistake, please tell me and I’ll fix it.
         </p>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-14">
@@ -207,14 +217,14 @@ export function OpenSourceSection() {
                         <li key={num} className={`sc-os-row ${seen ? "is-in" : ""}`} style={{ "--i": i } as CSSProperties}>
                           <a
                             href={`https://github.com/${repo}/pull/${num}`}
-                            className="group -ml-px grid grid-cols-[auto_58px_minmax(0,1fr)] items-center gap-x-3 border-l border-transparent py-2 pl-3 pr-2 transition hover:border-[#7fdbca] hover:bg-white/[.04]"
+                            className="group -ml-px grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-3 gap-y-1.5 border-l border-transparent py-3 pl-3 pr-2 transition hover:border-[#7fdbca] hover:bg-white/[.04] sm:grid-cols-[auto_58px_minmax(0,1fr)] sm:py-2"
                           >
                             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#8957e5]/20 px-2 py-0.5 text-[11px] font-semibold text-[#c9a7ff]">
                               {mergeIcon}
-                              <span className="hidden sm:inline">Merged</span>
+                              <span>Merged</span>
                             </span>
                             <span className="text-[#8a8478]">#{num}</span>
-                            <span className="font-sans text-[14px] leading-snug text-[#d8d3c7] group-hover:text-white">{title}</span>
+                            <span className="col-span-2 font-sans text-[14px] leading-snug text-[#d8d3c7] group-hover:text-white sm:col-span-1">{title}</span>
                           </a>
                         </li>
                       );
