@@ -33,9 +33,9 @@ const PROJECTS: Project[] = [
 ];
 
 const CERTS = [
-  { name: "DevOps Engineer", level: "Professional", code: "DOP" },
-  { name: "Solutions Architect", level: "Professional", code: "SAP" },
-  { name: "Advanced Networking", level: "Specialty", code: "ANS" },
+  { name: "AWS Certified DevOps Engineer – Professional", img: "/certifications/devops-professional.png", href: "https://www.credly.com/badges/16d5ea20-555b-4e3d-9e6d-bac8757f25e3" },
+  { name: "AWS Certified Solutions Architect – Professional", img: "/certifications/solutions-architect-professional.png", href: "https://www.credly.com/badges/d51490e4-3736-4f7d-8e26-b29e63ce31f3" },
+  { name: "AWS Certified Advanced Networking – Specialty", img: "/certifications/advanced-networking-specialty.png", href: "https://www.credly.com/badges/861d088f-d036-44b5-a269-3bce800465ee" },
 ];
 
 const PR_COUNT = PROJECTS.reduce((n, p) => n + p.prs.length, 0);
@@ -109,13 +109,13 @@ export function OpenSourceSection() {
       <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[520px] w-[520px] rounded-full bg-[radial-gradient(closest-side,rgba(19,165,142,.20),transparent)]" />
 
       <div ref={ref} className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 lg:py-28">
-        <p className="text-[13px] font-bold uppercase tracking-[.16em] text-[var(--sc-accent)]">Meet your instructor</p>
+        <p className="text-[13px] font-bold uppercase tracking-[.16em] text-[var(--sc-accent)]">Meet your developer</p>
         <h2 className="mt-4 max-w-[860px] text-[34px] font-bold leading-[1.08] tracking-[-.03em] sm:text-5xl lg:text-[56px]">
-          The person teaching you CDK
-          <span className="block text-[var(--sc-accent)]">also fixes the CDK CLI.</span>
+          Hi, I’m Vidit.
+          <span className="block text-[var(--sc-accent)]">I build these courses.</span>
         </h2>
         <p className="mt-5 max-w-[660px] text-[17px] leading-relaxed text-[var(--sc-ink-2)]">
-          I’m Vidit Shah. Alongside building these courses, I send fixes upstream to the AWS CDK CLI, Powertools for AWS Lambda and AWS sample projects, and maintainers merged {PR_COUNT} of them. That’s the bar I hold every lesson to: real code, reviewed by the people who own it. The diffs are public, so you can check my work.
+          I’m a developer from Mumbai who learns AWS by building with it. Along the way I’ve been lucky to have {PR_COUNT} fixes accepted by projects I rely on, like the AWS CDK CLI and Powertools for AWS Lambda, and I’m grateful to the maintainers who took the time to review them. I try to bring the same care to every lesson here. If you ever spot a mistake, please tell me and I’ll fix it.
         </p>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-14">
@@ -132,7 +132,7 @@ export function OpenSourceSection() {
                 />
                 <div>
                   <p className="text-lg font-bold">Vidit Shah</p>
-                  <p className="text-sm text-[var(--sc-ink-3)]">Founder &amp; instructor · Mumbai</p>
+                  <p className="text-sm text-[var(--sc-ink-3)]">Developer, Serverless Creed · Mumbai</p>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ export function OpenSourceSection() {
                 {[
                   [PR_COUNT, "merged upstream"],
                   [PROJECTS.length, "projects"],
-                  [CERTS.length, "pro-level certs"],
+                  [CERTS.length, "certifications"],
                 ].map(([n, label]) => (
                   <div key={label as string}>
                     <dt className="font-mono text-[28px] font-bold leading-none">
@@ -152,19 +152,21 @@ export function OpenSourceSection() {
               </dl>
 
               <p className="mt-5 text-xs font-bold uppercase tracking-[.14em] text-[var(--sc-ink-3)]">AWS certifications</p>
-              <ul className="mt-3 space-y-2.5">
+              <ul className="mt-4 grid grid-cols-3 gap-2">
                 {CERTS.map((c) => (
-                  <li key={c.code} className="sc-os-cert group relative flex items-center gap-3 overflow-hidden rounded-xl border border-[var(--sc-line)] bg-[var(--sc-paper)] px-3.5 py-3">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[#13a58e] to-[#0e7c6b] font-mono text-[11px] font-bold text-white">
-                      {c.code}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block truncate text-[14px] font-semibold">{c.name}</span>
-                      <span className="block text-xs text-[var(--sc-ink-3)]">Certified · {c.level}</span>
-                    </span>
+                  <li key={c.href}>
+                    <a
+                      href={c.href}
+                      title={`${c.name}, verify on Credly`}
+                      aria-label={`${c.name}, verify on Credly`}
+                      className="sc-os-cert group relative block overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1 hover:drop-shadow-[0_14px_14px_rgba(14,124,107,.28)]"
+                    >
+                      <Image src={c.img} alt={c.name} width={240} height={240} className="h-auto w-full" />
+                    </a>
                   </li>
                 ))}
               </ul>
+              <p className="mt-3 text-xs leading-relaxed text-[var(--sc-ink-3)]">Tap a badge to verify it on Credly.</p>
 
               <a
                 href="https://github.com/proton0210"
