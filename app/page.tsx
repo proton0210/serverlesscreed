@@ -152,11 +152,11 @@ export default function Home() {
           <Link href="/" aria-label="Serverless Creed home" className="text-[var(--sc-ink)]">
             <Logo markClassName="h-7 w-auto sm:h-[30px]" wordmarkClassName="text-[15px] sm:text-[18px]" />
           </Link>
-          <div className="hidden items-center gap-8 text-[15px] font-semibold text-[var(--sc-ink-2)] lg:flex">
+          <div className="hidden items-center gap-6 whitespace-nowrap text-[15px] font-semibold text-[var(--sc-ink-2)] lg:flex xl:gap-7">
             <a href="#courses" className="transition hover:text-[var(--sc-ink)]">Courses</a>
-            <a href="#certificates" className="transition hover:text-[var(--sc-ink)]">Certificates</a>
-            <a href="#tools" className="transition hover:text-[var(--sc-ink)]">Desktop tools</a>
-            <a href="#about" className="transition hover:text-[var(--sc-ink)]">About</a>
+            <a href="#certificates" className="hidden transition xl:inline hover:text-[var(--sc-ink)]">Certificates</a>
+            <a href="#tools" className="transition hover:text-[var(--sc-ink)]">Tools</a>
+            <a href="#about" className="hidden transition xl:inline hover:text-[var(--sc-ink)]">About</a>
             <a href="#open-source" className="transition hover:text-[var(--sc-ink)]">Open source</a>
             <a href="#contribute" className="transition hover:text-[var(--sc-ink)]">Contribute</a>
           </div>
