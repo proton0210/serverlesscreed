@@ -580,29 +580,26 @@ export default function Home() {
           <div className="mt-12 grid gap-7 lg:grid-cols-2">
             {PRODUCTS.map((p, i) => (
               <article key={p.name} className="sc-h-lift flex flex-col gap-5 rounded-3xl border border-[#34302a] bg-gradient-to-b from-[#26221b] to-[#1d1a15] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_30px_60px_-30px_rgba(0,0,0,.6)] sm:p-8">
-                <div className="flex flex-wrap items-center gap-5">
-                  <span className="flex [perspective:500px]">
+                <div className="flex items-center gap-5">
+                  <span className="flex shrink-0 [perspective:500px]">
                     <Image src={p.icon} alt={`${p.name} app icon`} width={96} height={96} className="sc-h-turn h-20 w-20 sm:h-24 sm:w-24" style={i ? delay(-3.5) : undefined} />
                   </span>
                   <div>
                     <h3 className="text-3xl font-extrabold tracking-[-.03em]">{p.name}</h3>
                     <p className="mt-1 text-sm text-[#b9b4a8]">Desktop client for {p.service}</p>
                   </div>
-                  <span className={`rounded-full px-3 py-1.5 text-xs font-bold ${p.tone}`}>Pairs with {p.course}</span>
                 </div>
-                <p className="text-base leading-relaxed text-[#d8d3c7]">{p.description}</p>
-                <ul className="flex flex-wrap gap-2 text-[13px] font-semibold text-[#d8d3c7]">
+                <span className={`w-fit rounded-full px-3 py-1.5 text-xs font-bold ${p.tone}`}>Pairs with {p.course}</span>
+                <p className="min-h-[5.25rem] text-base leading-relaxed text-[#d8d3c7]">{p.description}</p>
+                <ul className="flex flex-wrap content-start gap-2 text-[13px] font-semibold text-[#d8d3c7]">
                   {p.features.map((f) => (
                     <li key={f} className="rounded-full border border-[#3a352d] px-3 py-1.5">
                       {f}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto grid gap-3 pt-1 sm:flex">
-                  <a href={p.storeHref} target="_blank" rel="noreferrer" aria-label={`Get ${p.name} for Windows from the Microsoft Store`} className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-[15px] font-bold text-[var(--sc-ink)] transition hover:-translate-y-0.5">
-                    Get for Windows <Icon d={external} className="h-3.5 w-3.5" />
-                  </a>
-                  <a href={p.websiteHref} target="_blank" rel="noreferrer" className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#4a453b] px-6 text-[15px] font-bold transition hover:-translate-y-0.5 hover:border-white">
+                <div className="mt-auto pt-1">
+                  <a href={p.websiteHref} target="_blank" rel="noreferrer" className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-6 text-[15px] font-bold text-[var(--sc-ink)] transition hover:-translate-y-0.5 sm:w-auto">
                     Explore {p.name} <Icon d={external} className="h-3.5 w-3.5" />
                   </a>
                 </div>
